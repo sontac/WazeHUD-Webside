@@ -24,8 +24,10 @@
     <nav class="nav" aria-label="Điều hướng chính">
       <a href="#features">Tính năng</a>
       <a href="#interfaces">Giao diện</a>
+      <a href="#updates">Cập nhật</a>
       <a href="#downloads">Firmware</a>
       <a href="#setup">Hướng dẫn</a>
+      <a href="#support">Ủng hộ</a>
       <a class="nav-github" href="https://github.com/sontac/WazeHUD-CYD-2.8" target="_blank" rel="noopener">GitHub ↗</a>
     </nav>
   </header>
@@ -43,8 +45,12 @@
         <div class="hero-meta"><span class="meta-chip">ESP32 · CYD 2.8″</span><span class="meta-chip">USB &amp; BLE</span><span class="meta-chip">GitHub Releases</span></div>
       </div>
 
-      <div class="hud-stage" aria-label="Minh họa giao diện HUD">
+      <div class="hud-stage" aria-label="Ảnh thực tế thiết bị WazeHUD-CYD 2.8">
         <div class="stage-grid"></div>
+        <figure class="real-device-photo">
+          <img src="assets/images/hud-boot.jpg" alt="Thiết bị WazeHUD-CYD 2.8 trong vỏ in 3D màu cam, đang hiển thị màn hình khởi động" loading="eager">
+          <figcaption>ẢNH THỰC TẾ · WAZEHUD-CYD 2.8</figcaption>
+        </figure>
         <div class="hud-device">
           <div class="device-camera"></div>
           <div class="hud-screen">
@@ -93,12 +99,46 @@
         <div><div class="eyebrow">02 — TRẢI NGHIỆM HIỂN THỊ</div><h2>Một thiết bị.<br><span>Nhiều cách quan sát.</span></h2></div>
         <p>Dự án phát triển nhiều kiểu bố cục HUD. Tên gọi và lựa chọn thực tế phụ thuộc phiên bản firmware bạn đang sử dụng.</p>
       </div>
-      <div class="interface-grid">
-        <article class="interface-card"><div class="interface-screen interface-v1"><span class="screen-kicker">CURRENT SPEED</span><strong>68</strong><small>km/h</small><div class="screen-rule"></div><span class="screen-foot">TỐC ĐỘ HIỆN TẠI</span></div><div class="interface-info"><span class="interface-tag">V1</span><h3>Tốc độ hiện tại</h3><p>Ưu tiên con số tốc độ lớn, dễ đọc.</p></div></article>
-        <article class="interface-card"><div class="interface-screen interface-v2"><span class="screen-kicker">SPEED LIMIT</span><div class="circle-limit">50</div><strong>42 <small>km/h</small></strong><span class="screen-foot">BIỂN GIỚI HẠN</span></div><div class="interface-info"><span class="interface-tag">V2</span><h3>Biển giới hạn</h3><p>Làm nổi bật giới hạn tốc độ và tốc độ hiện tại.</p></div></article>
-        <article class="interface-card"><div class="interface-screen interface-v3"><div class="v3-road">↱ <span>300 m · ĐƯỜNG LÁNG</span></div><div class="v3-row"><strong>55</strong><div class="circle-limit small">60</div></div><div class="v3-lanes">↖　↑　↗　↗</div><span class="screen-foot">GIAO DIỆN TÙY BIẾN</span></div><div class="interface-info"><span class="interface-tag">V3</span><h3>Giao diện tùy biến</h3><p>Bố cục kết hợp tốc độ, giới hạn và thông tin dẫn đường.</p></div></article>
+      <div class="interface-grid real-interface-grid">
+        <article class="interface-card real-interface-card">
+          <a class="screenshot-link" href="assets/images/ui-v1-toc-do-hien-tai.jpg" target="_blank" rel="noopener" aria-label="Mở ảnh giao diện V1 kích thước đầy đủ">
+            <img class="interface-photo" src="assets/images/ui-v1-toc-do-hien-tai.jpg" alt="Giao diện V1 hiển thị tốc độ hiện tại trên màn hình WazeHUD-CYD" loading="lazy">
+          </a>
+          <div class="interface-info"><span class="interface-tag">V1</span><h3>Tốc độ hiện tại</h3><p>Giao diện dẫn đường với tốc độ hiện tại, giới hạn tốc độ, thông tin rẽ và cảnh báo phía trước.</p></div>
+        </article>
+        <article class="interface-card real-interface-card">
+          <a class="screenshot-link" href="assets/images/ui-v2-bien-gioi-han.jpg" target="_blank" rel="noopener" aria-label="Mở ảnh giao diện V2 kích thước đầy đủ">
+            <img class="interface-photo" src="assets/images/ui-v2-bien-gioi-han.jpg" alt="Giao diện V2 nhấn mạnh biển giới hạn tốc độ trên màn hình WazeHUD-CYD" loading="lazy">
+          </a>
+          <div class="interface-info"><span class="interface-tag">V2</span><h3>Biển giới hạn</h3><p>Biển giới hạn tốc độ được làm nổi bật, đi kèm thông tin hành trình và cảnh báo.</p></div>
+        </article>
+        <article class="interface-card real-interface-card">
+          <a class="screenshot-link" href="assets/images/ui-v3-giao-dien-tuy-bien.jpg" target="_blank" rel="noopener" aria-label="Mở ảnh giao diện V3 kích thước đầy đủ">
+            <img class="interface-photo" src="assets/images/ui-v3-giao-dien-tuy-bien.jpg" alt="Giao diện V3 tùy biến kết hợp tốc độ, biển giới hạn, hướng rẽ và cảnh báo" loading="lazy">
+          </a>
+          <div class="interface-info"><span class="interface-tag">V3</span><h3>Giao diện tùy biến</h3><p>Kết hợp hướng rẽ, tốc độ, biển giới hạn, tên đường và thông tin cảnh báo trong một bố cục.</p></div>
+        </article>
       </div>
-      <p class="note-line">Các khung giao diện phía trên là hình minh họa do website tạo, không phải ảnh chụp màn hình firmware.</p>
+      <div class="version-picker-card">
+        <a class="version-picker-image" href="assets/images/app-chon-giao-dien.jpg" target="_blank" rel="noopener">
+          <img src="assets/images/app-chon-giao-dien.jpg" alt="Ảnh chụp phần cài đặt cho phép chọn Tốc độ hiện tại, Biển giới hạn hoặc Giao diện V3" loading="lazy">
+        </a>
+        <div><div class="eyebrow">TÙY CHỌN TRONG ỨNG DỤNG</div><h3>Chọn giao diện phù hợp</h3><p>Ảnh cài đặt cho thấy ba lựa chọn: <strong>Tốc độ hiện tại</strong>, <strong>Biển giới hạn</strong> và <strong>Giao diện V3</strong>. Tên gọi hiển thị có thể thay đổi theo phiên bản firmware/app.</p></div>
+      </div>
+      <p class="note-line">Ảnh thiết bị và giao diện do chủ dự án cung cấp. Nội dung mô tả chỉ dựa trên các chi tiết nhìn thấy trong ảnh.</p>
+    </section>
+
+    <section id="updates" class="section section-wrap updates-section">
+      <div class="section-heading">
+        <div><div class="eyebrow">03 — TÍNH NĂNG TRONG ẢNH THỰC TẾ</div><h2>Những điểm nổi bật<br><span>của giao diện HUD.</span></h2></div>
+        <p>Tổng hợp từ ảnh thiết bị và màn hình cài đặt bạn cung cấp. Đây không thay thế changelog chính thức của từng firmware release.</p>
+      </div>
+      <div class="updates-grid">
+        <article class="update-card"><span class="update-index">FEATURE / 01</span><h3>Ba lựa chọn hiển thị</h3><p>Ảnh cài đặt thể hiện các lựa chọn Tốc độ hiện tại, Biển giới hạn và Giao diện V3.</p></article>
+        <article class="update-card"><span class="update-index">FEATURE / 02</span><h3>Thông tin dẫn đường</h3><p>Ảnh giao diện cho thấy hướng rẽ, khoảng cách, tên đường, làn đường và thông tin hành trình.</p></article>
+        <article class="update-card"><span class="update-index">FEATURE / 03</span><h3>Cảnh báo trực quan</h3><p>Các giao diện minh họa biểu tượng camera/đèn giao thông và biển giới hạn ở những vị trí riêng biệt.</p></article>
+      </div>
+      <div class="release-cta"><span>Muốn xem thay đổi theo từng phiên bản firmware?</span><a class="text-link" href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">Đọc changelog chính thức trên GitHub ↗</a></div>
     </section>
 
     <section id="downloads" class="section section-wrap downloads-section">
@@ -142,6 +182,20 @@
         <article class="step-card"><span>04</span><h3>Kiểm tra sau khi nạp</h3><p>Khởi động thiết bị, kiểm tra hiển thị và kết nối trước khi sử dụng.</p></article>
       </div>
       <div class="warning-note"><span>!</span><p><strong>Lưu ý:</strong> Không nạp tệp chỉ dựa vào tên gần giống. Kiểm tra đúng phiên bản, loại kết nối, hướng dẫn và nội dung release trước khi thực hiện.</p></div>
+    </section>
+
+
+    <section id="support" class="section section-wrap support-section">
+      <div class="support-panel">
+        <div class="support-copy">
+          <div class="eyebrow">♡ — ỦNG HỘ DỰ ÁN</div>
+          <h2>Thấy hữu ích?<br><span>Mời mình một ly cà phê ☕</span></h2>
+          <p>WazeHUD-CYD được phát triển và chia sẻ miễn phí. Nếu dự án hữu ích với bạn, một lời động viên hoặc một ly cà phê sẽ giúp mình có thêm động lực để tiếp tục hoàn thiện tính năng, thử nghiệm phần cứng và hỗ trợ cộng đồng.</p>
+          <p class="support-instruction">Quét mã VietQR bằng ứng dụng ngân hàng để ủng hộ dự án. Sự ủng hộ hoàn toàn tự nguyện — bạn vẫn có thể sử dụng firmware miễn phí.</p>
+          <div class="support-account"><span class="support-bank-mark">VP</span><div><strong>PHAM TRUONG SON</strong><small>VPBank · VietQR / Napas 247</small><small class="support-account-number">0943984939</small></div></div>
+        </div>
+        <div class="support-qr-wrap"><div class="support-qr-card"><img src="assets/images/vpbank-vietqr.png" alt="Mã VietQR VPBank để ủng hộ dự án WazeHUD-CYD" loading="lazy"><div class="qr-caption"><span class="qr-check">✓</span><span>Quét mã để ủng hộ</span></div></div><span class="support-qr-note">Vui lòng kiểm tra tên người nhận trên ứng dụng ngân hàng trước khi xác nhận.</span></div>
+      </div>
     </section>
 
     <section class="community section-wrap">

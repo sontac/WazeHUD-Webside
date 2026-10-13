@@ -31,3 +31,15 @@ Workflow `.github/workflows/pages.yml` có thể dùng thay cho cấu hình depl
 
 ## Lưu ý về asset USB/BLE
 Logic hiện tìm trong 20 bản phát hành công khai gần nhất, bỏ qua draft/prerelease, rồi chọn asset có tên chứa `USB` hoặc `BLE` và phần mở rộng `.bin`, `.zip` hoặc `.uf2`. Nếu tên tệp trong repo dùng quy ước khác, cập nhật hàm `channelMatches()` trong `assets/js/main.js`.
+
+
+## Ảnh giao diện thực tế
+Ảnh chủ dự án đã được đặt tại `assets/images/`:
+- `hud-boot.jpg`: ảnh thiết bị/màn hình khởi động.
+- `ui-v1-toc-do-hien-tai.jpg`: giao diện V1.
+- `ui-v2-bien-gioi-han.jpg`: giao diện V2.
+- `ui-v3-giao-dien-tuy-bien.jpg`: giao diện V3.
+- `app-chon-giao-dien.jpg`: ảnh lựa chọn giao diện trong ứng dụng.
+
+Để thay ảnh, tải ảnh mới lên đúng đường dẫn và giữ nguyên tên tệp; hoặc sửa thuộc tính `src` trong `index.html` nếu đổi tên.
+Mục “Tính năng trong ảnh thực tế” mô tả các chi tiết nhìn thấy trong ảnh, không khẳng định đó là changelog của bản phát hành mới nhất. Changelog chính thức liên kết tới GitHub Releases.
