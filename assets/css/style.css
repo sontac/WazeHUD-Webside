@@ -139,3 +139,14 @@ body{font-size:16px;line-height:1.75}
 .language-button:hover{border-color:#2b6875;color:#fff}
 .language-button.active{background:var(--cyan);border-color:var(--cyan);color:#031217}
 @media(max-width:620px){.hero-actions .button{flex:1 1 145px}.nav a[href="#web-flasher"]{text-align:center;margin-top:4px}.flasher-topline{align-items:flex-start;flex-direction:column}.language-switch{max-width:100%;flex-wrap:wrap}.visitor-stat strong{font-size:16px}}
+
+/* Make visitor count easier to spot and give it a useful fallback */
+.stats-strip{grid-template-columns:repeat(5,minmax(0,1fr))}
+.visitor-stat{padding-left:20px!important;border-left:1px solid var(--line)!important;min-width:0}
+.visitor-stat .visitor-label{font-size:8px;letter-spacing:1px;color:var(--cyan);margin:0 0 6px}
+.visitor-stat strong{min-height:30px;display:flex;align-items:center}
+.visitor-stat img{max-width:100%;height:auto;min-height:24px}
+.visitor-stat .visitor-fallback{font:600 13px var(--font);color:#f0b45b}
+.visitor-stat .visitor-help{display:inline-block;margin-top:6px;font-size:9px;color:var(--cyan);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:900px){.stats-strip{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:20px}.visitor-stat{padding-left:14px!important}}
+@media(max-width:620px){.stats-strip{grid-template-columns:repeat(2,minmax(0,1fr));padding:17px;gap:18px}.visitor-stat{padding-left:13px!important}.visitor-stat .visitor-label{font-size:7px}}
