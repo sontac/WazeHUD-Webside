@@ -116,3 +116,13 @@ body{font-size:16px;line-height:1.75}
 .flasher-copy .flasher-note{margin:18px 0;font-size:13px}
 .flasher-copy .text-link{display:inline-block;margin-top:8px}
 @media(max-width:620px){.flasher-options{grid-template-columns:1fr}.flasher-option{padding:17px}.flasher-warning{font-size:12px}}
+
+/* UI refinement: consistent cyan filled actions and supplied project logo */
+.button-secondary{background:var(--cyan);color:#031217;border:1px solid var(--cyan);box-shadow:0 7px 30px #00d6ed20}
+.button-secondary:hover{background:#8af7ff;border-color:#8af7ff}
+.esp-install [slot="activate"]{width:100%;font:700 15px var(--font);}
+.esp-install [slot="activate"].button-primary{background:var(--cyan);color:#031217;border:1px solid var(--cyan);box-shadow:0 7px 30px #00d6ed20}
+.esp-install [slot="activate"].button-primary:hover{background:#8af7ff}
+.brand-logo img{width:210px;max-height:58px;object-fit:contain;object-position:left center}
+.footer-brand img{width:185px;max-height:52px}
+@media(max-width:620px){.brand-logo img{width:150px;max-height:46px}.footer-brand img{width:150px}}

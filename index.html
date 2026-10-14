@@ -16,7 +16,7 @@
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="site-header">
-    <a class="brand brand-logo" href="#top" aria-label="WazeHUD trang chủ"><img src="assets/images/wazehud-logo.svg" alt="WazeHUD" width="180" height="42"><span class="brand-subtitle">CYD 2.8 PROJECT</span></a>
+    <a class="brand brand-logo" href="#top" aria-label="WazeHUD trang chủ"><img src="assets/images/wazehud-logo.png" alt="WazeHUD" width="180" height="42"><span class="brand-subtitle">CYD 2.8 PROJECT</span></a>
     <button class="menu-toggle" aria-label="Mở menu" aria-expanded="false">☰</button>
     <nav class="nav" aria-label="Điều hướng chính">
       <a href="#features">Tính năng</a>
@@ -37,7 +37,7 @@
         <p class="hero-lead">WazeHUD-CYD biến màn hình ESP32 CYD 2.8 inch thành màn hình hiển thị hành trình trực quan — tập trung vào tốc độ, giới hạn tốc độ và chỉ dẫn rẽ.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#downloads">Tải firmware <span>↓</span></a>
-          <a class="button button-secondary" href="https://github.com/sontac/WazeHUD-CYD-2.8" target="_blank" rel="noopener">Khám phá mã nguồn <span>↗</span></a>
+          <a class="button button-primary" href="https://github.com/sontac/WazeHUD-CYD-2.8" target="_blank" rel="noopener">Khám phá mã nguồn <span>↗</span></a>
         </div>
         <div class="hero-meta"><span class="meta-chip">ESP32 · CYD 2.8″</span><span class="meta-chip">USB &amp; BLE</span><span class="meta-chip">GitHub Releases</span></div>
       </div>
@@ -45,7 +45,7 @@
       <div class="hud-stage" aria-label="Ảnh thực tế thiết bị WazeHUD-CYD 2.8">
         <div class="stage-grid"></div>
         <figure class="real-device-photo">
-          <img src="assets/images/hud-boot.jpg" alt="Thiết bị WazeHUD-CYD 2.8 trong vỏ in 3D màu cam, đang hiển thị màn hình khởi động" loading="eager">
+          <img src="assets/images/ui-v2-bien-gioi-han.jpg" alt="Ảnh thực tế giao diện V2 nhấn mạnh biển giới hạn tốc độ trên WazeHUD-CYD 2.8" loading="eager">
           <figcaption>ẢNH THỰC TẾ · WAZEHUD-CYD 2.8</figcaption>
         </figure>
         <div class="stage-caption">THIẾT BỊ THỰC TẾ · WAZEHUD-CYD 2.8</div>
@@ -81,6 +81,12 @@
         <p>Dự án phát triển nhiều kiểu bố cục HUD. Tên gọi và lựa chọn thực tế phụ thuộc phiên bản firmware bạn đang sử dụng.</p>
       </div>
       <div class="interface-grid real-interface-grid">
+        <article class="interface-card real-interface-card">
+          <a class="screenshot-link" href="assets/images/hud-boot.jpg" target="_blank" rel="noopener" aria-label="Mở ảnh màn hình chờ kết nối kích thước đầy đủ">
+            <img class="interface-photo" src="assets/images/hud-boot.jpg" alt="Màn hình chờ kết nối của thiết bị WazeHUD-CYD 2.8" loading="lazy">
+          </a>
+          <div class="interface-info"><span class="interface-tag">BOOT</span><h3>Màn hình chờ kết nối</h3><p>Màn hình khởi động hiển thị khi thiết bị đang chờ kết nối với ứng dụng.</p></div>
+        </article>
         <article class="interface-card real-interface-card">
           <a class="screenshot-link" href="assets/images/ui-v1-toc-do-hien-tai.jpg" target="_blank" rel="noopener" aria-label="Mở ảnh giao diện V1 kích thước đầy đủ">
             <img class="interface-photo" src="assets/images/ui-v1-toc-do-hien-tai.jpg" alt="Giao diện V1 hiển thị tốc độ hiện tại trên màn hình WazeHUD-CYD" loading="lazy">
@@ -143,7 +149,7 @@
             <div class="download-card-top"><span class="download-icon">ᛒ</span><span class="download-type">KÊNH 02</span></div>
             <h3>Bluetooth BLE</h3><p>Dành cho cấu hình firmware sử dụng Bluetooth Low Energy.</p>
             <div class="asset-name" id="ble-asset-name">Đang tìm firmware BLE…</div>
-            <a id="ble-download" class="button button-secondary download-button" href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">Tìm bản BLE trên GitHub ↗</a>
+            <a id="ble-download" class="button button-primary download-button" href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">Tìm bản BLE trên GitHub ↗</a>
             <small id="ble-note">Liên kết sẽ chỉ trỏ tới tệp nếu tìm thấy asset phù hợp trong Releases.</small>
           </article>
           <div class="download-footnote">Website đọc danh sách asset từ GitHub Releases. Nếu chưa tìm thấy tệp phù hợp, nút sẽ mở trang Releases để bạn kiểm tra thủ công — không tạo đường dẫn tải đoán.</div>
@@ -175,7 +181,7 @@
               <h3>Firmware BLE</h3>
               <div class="asset-name" id="ble-flash-asset">Đang kiểm tra file BIN BLE…</div>
               <esp-web-install-button id="ble-flash-button" class="esp-install" aria-label="Nạp firmware BLE">
-                <button slot="activate" class="button button-secondary" type="button" disabled>Nạp bản BLE</button>
+                <button slot="activate" class="button button-primary" type="button" disabled>Nạp bản BLE</button>
                 <span slot="unsupported" class="flasher-inline-note">Trình duyệt này chưa hỗ trợ nạp qua cổng nối tiếp. Hãy mở bằng Chrome hoặc Edge trên máy tính.</span>
                 <span slot="not-allowed" class="flasher-inline-note">Hãy mở website qua HTTPS để cho phép nạp firmware.</span>
               </esp-web-install-button>
@@ -223,7 +229,7 @@
   </main>
 
   <footer class="site-footer section-wrap">
-    <a class="brand footer-brand brand-logo" href="#top"><img src="assets/images/wazehud-logo.svg" alt="WazeHUD" width="160" height="37"><span class="brand-subtitle">CYD 2.8 PROJECT</span></a>
+    <a class="brand footer-brand brand-logo" href="#top"><img src="assets/images/wazehud-logo.png" alt="WazeHUD" width="160" height="37"><span class="brand-subtitle">CYD 2.8 PROJECT</span></a>
     <p>Dự án cộng đồng · Firmware phát hành qua GitHub</p>
     <a href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">GitHub Releases ↗</a>
     <small class="copyright">© <span id="year"></span> WazeHUD-CYD 2.8. Trang giới thiệu cộng đồng, không phải website chính thức của Waze.</small>
