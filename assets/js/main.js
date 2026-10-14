@@ -40,6 +40,65 @@
     }
     return null;
   };
+  const mergedBinMatches = (asset, channel) => {
+    const name = asset?.name || "";
+    const escapedChannel = channel.toUpperCase();
+    return new RegExp(`^WazeHUD-CYD-${escapedChannel}-v\\d+\\.\\d+\\.\\d+(?:[-+][A-Za-z0-9.-]+)?\\.bin$`, "i").test(name);
+  };
+
+  const chooseMergedBin = (releases, channel) => {
+    for (const release of releases) {
+      const assets = (release.assets || []).filter((asset) => mergedBinMatches(asset, channel));
+      if (assets.length) return { release, asset: assets[0] };
+    }
+    return null;
+  };
+
+  const flashObjectUrls = { usb: null, ble: null };
+  const configureFlasher = async (channel, match) => {
+    const prefix = channel === "usb" ? "usb" : "ble";
+    const assetLabel = $(`${prefix}-flash-asset`);
+    const installButton = $(`${prefix}-flash-button`);
+    const activateButton = installButton?.querySelector('[slot="activate"]');
+    if (!assetLabel || !installButton || !activateButton) return false;
+
+    if (!match) {
+      assetLabel.textContent = `Không tìm thấy file BIN gộp đúng tên cho kênh ${channel.toUpperCase()}.`;
+      activateButton.disabled = true;
+      activateButton.textContent = `Chưa có BIN ${channel.toUpperCase()}`;
+      return false;
+    }
+
+    assetLabel.textContent = `${match.asset.name} · ${match.release.tag_name || match.release.name || "release"}`;
+    activateButton.disabled = true;
+    activateButton.textContent = `Chuẩn bị nạp bản ${channel.toUpperCase()}…`;
+    try {
+      // ESP Web Tools speaks Web Serial. Import only after a compatible merged BIN was found.
+      await import("https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module");
+      await customElements.whenDefined("esp-web-install-button");
+      const manifest = {
+        name: `WazeHUD-CYD ${channel.toUpperCase()}`,
+        version: String(match.release.tag_name || match.release.name || "latest").replace(/^v/i, ""),
+        new_install_prompt_erase: true,
+        builds: [{
+          chipFamily: "ESP32",
+          parts: [{ path: match.asset.browser_download_url, offset: 0 }]
+        }]
+      };
+      if (flashObjectUrls[channel]) URL.revokeObjectURL(flashObjectUrls[channel]);
+      flashObjectUrls[channel] = URL.createObjectURL(new Blob([JSON.stringify(manifest)], { type: "application/json" }));
+      installButton.manifest = flashObjectUrls[channel];
+      activateButton.disabled = false;
+      activateButton.textContent = `Nạp firmware ${channel.toUpperCase()}`;
+      return true;
+    } catch (error) {
+      assetLabel.textContent += " · Không tải được mô-đun trình nạp.";
+      activateButton.disabled = true;
+      activateButton.textContent = "Trình nạp chưa sẵn sàng";
+      return false;
+    }
+  };
+
   const setChannel = (channel, match) => {
     const prefix = channel === "usb" ? "usb" : "ble";
     const button = $(`${prefix}-download`);
@@ -89,6 +148,20 @@
       }
       setChannel("usb", chooseLatest(published, "usb"));
       setChannel("ble", chooseLatest(published, "ble"));
+      Promise.all([
+        configureFlasher("usb", chooseMergedBin(published, "usb")),
+        configureFlasher("ble", chooseMergedBin(published, "ble"))
+      ]).then((results) => {
+        const status = $("flasher-status");
+        const ready = results.filter(Boolean).length;
+        if (status) {
+          status.textContent = ready === 2
+            ? "Đã tìm thấy BIN gộp cho cả USB và BLE. Chọn đúng kênh, kết nối HUD và làm theo hộp thoại nạp."
+            : ready === 1
+              ? "Đã chuẩn bị trình nạp cho một kênh. Kênh còn lại chưa có file BIN gộp đúng quy ước tên."
+              : "Chưa có file BIN gộp đúng quy ước tên để bật nạp trực tiếp. Bạn vẫn có thể tải firmware từ mục phía trên.";
+        }
+      });
     })
     .catch(() => {
       $("release-status-text").textContent = "Không thể kết nối GitHub API lúc này. Bạn vẫn có thể mở Releases để kiểm tra.";
@@ -97,6 +170,12 @@
         $(`${channel}-download`).href = releasesUrl;
         $(`${channel}-download`).textContent = `Mở Releases · kiểm tra ${channel.toUpperCase()} ↗`;
         $(`${channel}-note`).textContent = "Liên kết dự phòng mở trang phát hành chính thức.";
+        const flashAsset = $(`${channel}-flash-asset`);
+        const flashButton = $(`${channel}-flash-button`);
+        const activate = flashButton?.querySelector('[slot="activate"]');
+        if (flashAsset) flashAsset.textContent = "Không đọc được GitHub Releases. Hãy thử tải lại trang.";
+        if (activate) { activate.disabled = true; activate.textContent = "Chưa thể nạp"; }
       }
+      $("flasher-status").textContent = "Không thể kiểm tra các BIN trên GitHub. Tải lại trang hoặc mở Releases để kiểm tra.";
     });
 })();

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 82" role="img" aria-labelledby="title">
+<title id="title">WazeHUD</title>
+<g font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="54" letter-spacing="-2">
+  <text x="3" y="57" fill="#f4f8ff">Waze</text>
+  <text x="142" y="57" fill="#38e5f2">HUD</text>
+</g>
+<g transform="translate(278 7)" fill="none" stroke="#38e5f2" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M15 11 C4 11 0 21 3 31 L0 42 L12 39 C18 45 30 46 39 39 C49 31 48 16 38 9 C31 4 22 5 15 11 Z"/>
+  <circle cx="17" cy="22" r="2.4" fill="#f4f8ff" stroke="none"/>
+  <circle cx="31" cy="22" r="2.4" fill="#f4f8ff" stroke="none"/>
+  <path d="M17 30 Q24 37 32 30" stroke="#f4f8ff" stroke-width="3.2"/>
+  <path d="M-3 12 H8 M-8 22 H2" stroke-width="3.2"/>
+</g>
+</svg>

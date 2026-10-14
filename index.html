@@ -16,10 +16,7 @@
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="WazeHUD trang chủ">
-      <span class="brand-mark"><span></span><span></span><span></span></span>
-      <span>WAZE<span class="brand-accent">HUD</span><small>CYD 2.8 PROJECT</small></span>
-    </a>
+    <a class="brand brand-logo" href="#top" aria-label="WazeHUD trang chủ"><img src="assets/images/wazehud-logo.svg" alt="WazeHUD" width="180" height="42"><span class="brand-subtitle">CYD 2.8 PROJECT</span></a>
     <button class="menu-toggle" aria-label="Mở menu" aria-expanded="false">☰</button>
     <nav class="nav" aria-label="Điều hướng chính">
       <a href="#features">Tính năng</a>
@@ -51,23 +48,7 @@
           <img src="assets/images/hud-boot.jpg" alt="Thiết bị WazeHUD-CYD 2.8 trong vỏ in 3D màu cam, đang hiển thị màn hình khởi động" loading="eager">
           <figcaption>ẢNH THỰC TẾ · WAZEHUD-CYD 2.8</figcaption>
         </figure>
-        <div class="hud-device">
-          <div class="device-camera"></div>
-          <div class="hud-screen">
-            <div class="screen-top"><span class="screen-live"><i></i> NAVIGATION</span><span class="screen-time">08:42</span></div>
-            <div class="road-name"><span class="turn-symbol">↱</span><span><small>RẼ PHẢI VÀO</small><b>ĐƯỜNG LÁNG</b></span><strong>180 <small>m</small></strong></div>
-            <div class="hud-main">
-              <div class="speed-readout"><strong>58</strong><span>km/h</span></div>
-              <div class="limit-sign"><span>LIMIT</span><strong>60</strong></div>
-            </div>
-            <div class="lane-guidance"><span class="lane muted">↖</span><span class="lane active">↑</span><span class="lane active">↗</span><span class="lane muted">↗</span></div>
-            <div class="screen-bottom"><span>● ĐANG DI CHUYỂN</span><span>WAZEHUD <b>●</b></span></div>
-          </div>
-        </div>
-        <div class="hud-orbit orbit-a"></div><div class="hud-orbit orbit-b"></div>
-        <div class="floating-label label-left"><span class="label-icon">⌁</span><span><b>TỐC ĐỘ THỜI GIAN THỰC</b><small>Hiển thị rõ ràng</small></span></div>
-        <div class="floating-label label-right"><span class="label-icon">↗</span><span><b>CHỈ DẪN HÀNH TRÌNH</b><small>Thông tin trực quan</small></span></div>
-        <div class="stage-caption">MINH HỌA GIAO DIỆN · CÓ THỂ KHÁC FIRMWARE THỰC TẾ</div>
+        <div class="stage-caption">THIẾT BỊ THỰC TẾ · WAZEHUD-CYD 2.8</div>
       </div>
       <div class="hero-bottom-line"><span>BUILT FOR THE ROAD</span><span>01 / PROJECT OVERVIEW</span></div>
     </section>
@@ -170,6 +151,42 @@
       </div>
     </section>
 
+    <section id="web-flasher" class="section section-wrap web-flasher-section">
+      <div class="flasher-panel">
+        <div class="flasher-icon" aria-hidden="true">⇧</div>
+        <div class="flasher-copy">
+          <div class="eyebrow">WEB FLASHER · USB</div>
+          <h2>Nạp firmware ngay trên trình duyệt</h2>
+          <p>Kết nối HUD với máy tính bằng cáp USB truyền dữ liệu, chọn đúng kênh firmware rồi nạp trực tiếp trong trình duyệt. Trình nạp sử dụng firmware gộp <code>.bin</code> ở địa chỉ <code>0x0</code>.</p>
+          <div class="flasher-warning"><strong>Trước khi nạp:</strong> chỉ dùng với WazeHUD-CYD 2.8 tương thích. Nạp firmware sẽ ghi đè nội dung flash; không rút cáp hoặc đóng trang trong quá trình thực hiện. Chức năng cần Chrome hoặc Microsoft Edge trên máy tính qua HTTPS.</div>
+          <div class="flasher-options">
+            <article class="flasher-option">
+              <div class="download-card-top"><span class="download-icon">⌁</span><span class="download-type">KÊNH 01</span></div>
+              <h3>Firmware USB</h3>
+              <div class="asset-name" id="usb-flash-asset">Đang kiểm tra file BIN USB…</div>
+              <esp-web-install-button id="usb-flash-button" class="esp-install" aria-label="Nạp firmware USB">
+                <button slot="activate" class="button button-primary" type="button" disabled>Nạp bản USB</button>
+                <span slot="unsupported" class="flasher-inline-note">Trình duyệt này chưa hỗ trợ nạp qua cổng nối tiếp. Hãy mở bằng Chrome hoặc Edge trên máy tính.</span>
+                <span slot="not-allowed" class="flasher-inline-note">Hãy mở website qua HTTPS để cho phép nạp firmware.</span>
+              </esp-web-install-button>
+            </article>
+            <article class="flasher-option">
+              <div class="download-card-top"><span class="download-icon">ᛒ</span><span class="download-type">KÊNH 02</span></div>
+              <h3>Firmware BLE</h3>
+              <div class="asset-name" id="ble-flash-asset">Đang kiểm tra file BIN BLE…</div>
+              <esp-web-install-button id="ble-flash-button" class="esp-install" aria-label="Nạp firmware BLE">
+                <button slot="activate" class="button button-secondary" type="button" disabled>Nạp bản BLE</button>
+                <span slot="unsupported" class="flasher-inline-note">Trình duyệt này chưa hỗ trợ nạp qua cổng nối tiếp. Hãy mở bằng Chrome hoặc Edge trên máy tính.</span>
+                <span slot="not-allowed" class="flasher-inline-note">Hãy mở website qua HTTPS để cho phép nạp firmware.</span>
+              </esp-web-install-button>
+            </article>
+          </div>
+          <p class="flasher-note" id="flasher-status" role="status" aria-live="polite">Đang tìm các file firmware gộp trong GitHub Releases…</p>
+          <a class="text-link" href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">Xem file và ghi chú phát hành trên GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+
     <section id="setup" class="section section-wrap">
       <div class="section-heading">
         <div><div class="eyebrow">04 — BẮT ĐẦU</div><h2>Trước khi nạp<br><span>firmware mới.</span></h2></div>
@@ -206,7 +223,7 @@
   </main>
 
   <footer class="site-footer section-wrap">
-    <a class="brand footer-brand" href="#top"><span class="brand-mark"><span></span><span></span><span></span></span><span>WAZE<span class="brand-accent">HUD</span><small>CYD 2.8 PROJECT</small></span></a>
+    <a class="brand footer-brand brand-logo" href="#top"><img src="assets/images/wazehud-logo.svg" alt="WazeHUD" width="160" height="37"><span class="brand-subtitle">CYD 2.8 PROJECT</span></a>
     <p>Dự án cộng đồng · Firmware phát hành qua GitHub</p>
     <a href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">GitHub Releases ↗</a>
     <small class="copyright">© <span id="year"></span> WazeHUD-CYD 2.8. Trang giới thiệu cộng đồng, không phải website chính thức của Waze.</small>
