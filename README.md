@@ -7,7 +7,10 @@ Website tĩnh tiếng Việt theo phong cách công nghệ/HUD, thiết kế res
 - Minh họa HUD bằng CSS/HTML (không giả làm ảnh chụp firmware thật).
 - Mục tính năng, các giao diện V1/V2/V3, hướng dẫn và cảnh báo chọn firmware.
 - Hai nút USB và BLE riêng. Trang dùng GitHub Releases API để tìm asset được phát hành thật, sau đó lấy chính xác `browser_download_url` từ API. Nếu không tìm được asset phù hợp hoặc API lỗi, nút chỉ mở trang Releases chính thức; website không đoán URL tải.
-- Trình nạp USB trên trình duyệt dùng ESP Web Tools; tạo manifest động từ đúng asset `.bin` gộp trong GitHub Releases và ghi tại offset `0x0`.
+- Trình nạp USB/BLE trên trình duyệt dùng ESP Web Tools; tạo manifest động từ đúng asset `.bin` gộp trong GitHub Releases và ghi tại offset `0x0`. Manifest đặt `improv: false` vì firmware không cần Improv Wi-Fi Serial.
+- Có nút truy cập nhanh tới mục nạp firmware trong hero và menu điều hướng.
+- Có bộ đếm lượt truy cập công khai dùng Visitor Badge API; số liệu phụ thuộc dịch vụ bên thứ ba và cần kết nối internet.
+- Có nút chuyển ngôn ngữ Tiếng Việt/English cho phần Web Flasher. Các chuỗi trong hộp thoại thư viện ESP Web Tools được dịch best-effort; một số thông báo nội bộ có thể vẫn bằng tiếng Anh do thư viện không cung cấp tùy chọn locale chính thức.
 - Không cần backend hoặc API key; trình nạp cần internet, HTTPS và trình duyệt máy tính có Web Serial.
 
 ## Chạy thử

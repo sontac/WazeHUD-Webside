@@ -23,6 +23,7 @@
       <a href="#interfaces">Giao diện</a>
       <a href="#updates">Cập nhật</a>
       <a href="#downloads">Firmware</a>
+      <a href="#web-flasher">Nạp firmware</a>
       <a href="#setup">Hướng dẫn</a>
       <a href="#support">Ủng hộ</a>
       <a class="nav-github" href="https://github.com/sontac/WazeHUD-CYD-2.8" target="_blank" rel="noopener">GitHub ↗</a>
@@ -37,6 +38,7 @@
         <p class="hero-lead">WazeHUD-CYD biến màn hình ESP32 CYD 2.8 inch thành màn hình hiển thị hành trình trực quan — tập trung vào tốc độ, giới hạn tốc độ và chỉ dẫn rẽ.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#downloads">Tải firmware <span>↓</span></a>
+          <a class="button button-primary" href="#web-flasher">Nạp firmware <span>⇧</span></a>
           <a class="button button-primary" href="https://github.com/sontac/WazeHUD-CYD-2.8" target="_blank" rel="noopener">Khám phá mã nguồn <span>↗</span></a>
         </div>
         <div class="hero-meta"><span class="meta-chip">ESP32 · CYD 2.8″</span><span class="meta-chip">USB &amp; BLE</span><span class="meta-chip">GitHub Releases</span></div>
@@ -58,6 +60,7 @@
       <div><strong>ESP32</strong><span>Nền tảng phần cứng</span></div>
       <div><strong>USB / BLE</strong><span>Các kênh firmware</span></div>
       <div><strong>Open project</strong><span>Mã nguồn trên GitHub</span></div>
+      <div class="visitor-stat"><strong><img src="https://api.visitorbadge.io/api/visitors?path=sontac.WazeHUD-Webside&label=&countColor=%2300d9f5&style=flat" alt="Số lượt truy cập" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><span hidden>—</span></strong><span>Lượt truy cập website</span></div>
     </section>
 
     <section id="features" class="section section-wrap">
@@ -161,7 +164,7 @@
       <div class="flasher-panel">
         <div class="flasher-icon" aria-hidden="true">⇧</div>
         <div class="flasher-copy">
-          <div class="eyebrow">WEB FLASHER · USB</div>
+          <div class="flasher-topline"><div class="eyebrow">WEB FLASHER · USB</div><div class="language-switch" role="group" aria-label="Ngôn ngữ trình nạp"><span id="language-label">Ngôn ngữ:</span><button type="button" class="language-button active" data-flash-lang="vi" aria-pressed="true">Tiếng Việt</button><button type="button" class="language-button" data-flash-lang="en" aria-pressed="false">English</button></div></div>
           <h2>Nạp firmware ngay trên trình duyệt</h2>
           <p>Kết nối HUD với máy tính bằng cáp USB truyền dữ liệu, chọn đúng kênh firmware rồi nạp trực tiếp trong trình duyệt. Trình nạp sử dụng firmware gộp <code>.bin</code> ở địa chỉ <code>0x0</code>.</p>
           <div class="flasher-warning"><strong>Trước khi nạp:</strong> chỉ dùng với WazeHUD-CYD 2.8 tương thích. Nạp firmware sẽ ghi đè nội dung flash; không rút cáp hoặc đóng trang trong quá trình thực hiện. Chức năng cần Chrome hoặc Microsoft Edge trên máy tính qua HTTPS.</div>
