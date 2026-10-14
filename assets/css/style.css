@@ -126,3 +126,16 @@ body{font-size:16px;line-height:1.75}
 .brand-logo img{width:210px;max-height:58px;object-fit:contain;object-position:left center}
 .footer-brand img{width:185px;max-height:52px}
 @media(max-width:620px){.brand-logo img{width:150px;max-height:46px}.footer-brand img{width:150px}}
+
+/* Visitor counter, prominent flash shortcut and flasher language selector */
+.visitor-stat img{display:block;max-width:100%;height:auto;min-height:20px;filter:saturate(1.15)}
+.visitor-stat strong{min-height:24px;display:flex;align-items:center}
+.hero-actions .button{min-width:150px}
+.nav a[href="#web-flasher"]{color:var(--cyan);border:1px solid rgba(56,229,242,.3);padding:9px 12px;border-radius:7px}
+.flasher-topline{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.language-switch{display:flex;align-items:center;gap:6px;padding:5px;border:1px solid var(--line);border-radius:8px;background:#061016;color:var(--muted);font-size:11px}
+.language-switch span{padding:0 5px}
+.language-button{border:1px solid transparent;border-radius:5px;padding:7px 10px;background:transparent;color:#b8cbd3;font:600 11px var(--font);cursor:pointer}
+.language-button:hover{border-color:#2b6875;color:#fff}
+.language-button.active{background:var(--cyan);border-color:var(--cyan);color:#031217}
+@media(max-width:620px){.hero-actions .button{flex:1 1 145px}.nav a[href="#web-flasher"]{text-align:center;margin-top:4px}.flasher-topline{align-items:flex-start;flex-direction:column}.language-switch{max-width:100%;flex-wrap:wrap}.visitor-stat strong{font-size:16px}}
