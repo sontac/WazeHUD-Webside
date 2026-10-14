@@ -82,7 +82,7 @@
         new_install_prompt_erase: true,
         builds: [{
           chipFamily: "ESP32",
-          parts: [{ path: match.asset.browser_download_url, offset: 0 }]
+          parts: [{ path: new URL(`firmware/${match.asset.name}`, document.baseURI).href, offset: 0 }]
         }]
       };
       if (flashObjectUrls[channel]) URL.revokeObjectURL(flashObjectUrls[channel]);
