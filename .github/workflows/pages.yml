@@ -1,0 +1,75 @@
+name: Deploy WazeHUD website to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 4 * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download firmware assets into same-origin folder
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p firmware
+          python3 - <<'PY'
+          import json, re, urllib.request, pathlib
+          api = 'https://api.github.com/repos/sontac/WazeHUD-CYD-2.8/releases?per_page=30'
+          req = urllib.request.Request(api, headers={'Accept':'application/vnd.github+json','User-Agent':'WazeHUD-Webside-Deploy'})
+          with urllib.request.urlopen(req, timeout=30) as response:
+              releases = json.load(response)
+          pattern = re.compile(r'^WazeHUD-CYD-(USB|BLE)-v\d+\.\d+\.\d+(?:[-+][A-Za-z0-9.-]+)?\.bin$', re.I)
+          selected = {'USB': None, 'BLE': None}
+          for release in releases:
+              if release.get('draft') or release.get('prerelease'):
+                  continue
+              for asset in release.get('assets', []):
+                  match = pattern.match(asset.get('name',''))
+                  if match and selected[match.group(1).upper()] is None:
+                      selected[match.group(1).upper()] = asset
+              if all(selected.values()):
+                  break
+          out = pathlib.Path('firmware')
+          for channel, asset in selected.items():
+              if not asset:
+                  print(f'WARNING: No merged BIN found for {channel}')
+                  continue
+              name = asset['name']
+              url = asset['browser_download_url']
+              print(f'Downloading {name} from {url}')
+              request = urllib.request.Request(url, headers={'User-Agent':'WazeHUD-Webside-Deploy'})
+              with urllib.request.urlopen(request, timeout=120) as response, (out/name).open('wb') as target:
+                  while True:
+                      chunk = response.read(1024*1024)
+                      if not chunk: break
+                      target.write(chunk)
+              if (out/name).stat().st_size == 0:
+                  raise RuntimeError(f'Downloaded empty firmware: {name}')
+          PY
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
