@@ -167,3 +167,42 @@ body{font-size:16px;line-height:1.75}
 .feature-content p{margin:0;color:var(--muted)}
 .flasher-language-note{font-size:12px;color:var(--muted)}
 @media(max-width:620px){.feature-card .feature-photo,.feature-card.feature-large .feature-photo{height:205px}.feature-content{padding:18px}.flasher-topline{align-items:center;flex-direction:row}}
+
+/* Mobile horizontal-overflow guard: keep every section within the viewport. */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+@supports not (overflow: clip) {
+  html, body { overflow-x: hidden; }
+}
+img, video, iframe, canvas, svg { max-width: 100%; }
+.site-header, main, footer, .section-wrap, .section, .hero,
+.hero-copy, .hero-visual, .real-device-photo, .support-panel,
+.download-panel, .flasher-panel, .feature-grid, .interface-grid,
+.updates-grid, .steps-grid, .stats-strip, .community {
+  min-width: 0;
+  max-width: 100%;
+}
+@media (max-width: 620px) {
+  .ambient { display: none; }
+  .site-header { width: calc(100% - 32px); gap: 10px; }
+  .brand-logo { min-width: 0; max-width: calc(100% - 52px); }
+  .brand-logo img { max-width: 100%; }
+  .section-wrap { width: calc(100% - 32px); }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .hero-copy, .hero-actions, .hero-meta { min-width: 0; max-width: 100%; }
+  .hero-actions .button { min-width: 0; max-width: 100%; }
+  .hero h1, .section-heading h2, .download-copy h2,
+  .support-copy h2, .community h2 { overflow-wrap: anywhere; }
+  .stats-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats-strip > div { min-width: 0; padding-left: 10px; }
+  .stats-strip strong, .stats-strip span { overflow-wrap: anywhere; }
+  .flasher-panel { grid-template-columns: minmax(0, 1fr); }
+  .flasher-copy, .flasher-options, .flasher-option { min-width: 0; }
+  .flasher-option h3, .flasher-option p { overflow-wrap: anywhere; }
+  .support-panel, .download-panel, .version-picker-card { min-width: 0; }
+  .support-account { min-width: 0; overflow-wrap: anywhere; }
+  .site-footer > * { min-width: 0; overflow-wrap: anywhere; }
+}
