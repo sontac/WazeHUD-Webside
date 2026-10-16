@@ -150,3 +150,20 @@ body{font-size:16px;line-height:1.75}
 .visitor-stat .visitor-help{display:inline-block;margin-top:6px;font-size:9px;color:var(--cyan);text-decoration:underline;text-underline-offset:3px}
 @media(max-width:900px){.stats-strip{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:20px}.visitor-stat{padding-left:14px!important}}
 @media(max-width:620px){.stats-strip{grid-template-columns:repeat(2,minmax(0,1fr));padding:17px;gap:18px}.visitor-stat{padding-left:13px!important}.visitor-stat .visitor-label{font-size:7px}}
+
+/* Đồng nhất toàn bộ liên kết menu trên cùng */
+.nav .nav-github,
+.nav a[href="#web-flasher"]{color:inherit;border:0;padding:0;border-radius:0;background:transparent}
+.nav a:hover,.nav .nav-github:hover,.nav a[href="#web-flasher"]:hover{color:var(--cyan)}
+@media(max-width:620px){.nav .nav-github,.nav a[href="#web-flasher"]{text-align:left;margin-top:0;padding:12px 10px;border:0}}
+
+/* Phần Đặc điểm nổi bật dùng ảnh thật có thể thay trực tiếp trong assets/images/ */
+.feature-card{padding:0;overflow:hidden;display:flex;flex-direction:column;min-height:0}
+.feature-card .feature-photo{display:block;width:100%;height:190px;object-fit:cover;object-position:center;background:#061016;border-bottom:1px solid var(--line)}
+.feature-card.feature-large .feature-photo{height:230px}
+.feature-content{padding:22px 24px 25px;position:relative;flex:1}
+.feature-content .feature-number{font:700 11px var(--display);letter-spacing:1.4px;color:var(--cyan);margin-bottom:12px}
+.feature-content h3{margin:0 0 8px}
+.feature-content p{margin:0;color:var(--muted)}
+.flasher-language-note{font-size:12px;color:var(--muted)}
+@media(max-width:620px){.feature-card .feature-photo,.feature-card.feature-large .feature-photo{height:205px}.feature-content{padding:18px}.flasher-topline{align-items:center;flex-direction:row}}

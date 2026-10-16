@@ -62,3 +62,17 @@ Mục “Tính năng trong ảnh thực tế” mô tả các chi tiết nhìn t
 - Logo vector WazeHUD (Waze trắng, HUD cyan, biểu tượng riêng) đặt trong `assets/images/wazehud-logo.svg`.
 - Khu vực hero chỉ còn ảnh thiết bị thật, đã bỏ màn hình HUD minh họa và các nhãn nổi cạnh ảnh.
 - Đã tích hợp giao diện nạp trực tiếp USB/BLE bằng ESP Web Tools, dùng manifest tạo động từ asset BIN gộp trên GitHub Releases và offset `0x0`. Cần thử nạp thực tế trên thiết bị trước khi xác nhận hoạt động end-to-end.
+
+
+## Thay ảnh ở mục “Đặc điểm nổi bật”
+
+Các ảnh của sáu thẻ tính năng được gọi trực tiếp từ thư mục `assets/images/` trong `index.html`, nên có thể thay ảnh bằng cách giữ nguyên tên tệp hiện tại hoặc sửa đường dẫn `src` tương ứng:
+
+- Tốc độ & giới hạn tốc độ: `ui-v1-toc-do-hien-tai.jpg`
+- Chỉ dẫn rẽ: `ui-v3-giao-dien-tuy-bien.jpg`
+- Làn đường & tên đường: `ui-v1-toc-do-hien-tai.jpg`
+- Cảnh báo giao thông: `ui-v2-bien-gioi-han.jpg`
+- Nhiều lựa chọn giao diện: `app-chon-giao-dien.jpg`
+- Hai kênh kết nối: `hud-boot.jpg`
+
+Bạn có thể thay các ảnh này trong `assets/images/`. Lưu ý: một số ảnh đang được dùng ở các phần khác của website; nếu muốn thay riêng ảnh ở mục này mà không ảnh hưởng phần khác, hãy thêm ảnh mới vào `assets/images/` rồi cập nhật `src` của thẻ `img.feature-photo` trong `index.html`.
