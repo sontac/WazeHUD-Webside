@@ -209,3 +209,40 @@ img, video, iframe, canvas, svg { max-width: 100%; }
 /* ESP32-S3 hardware additions */
 .hardware-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:28px}.hardware-card{border:1px solid var(--line,rgba(255,255,255,.12));border-radius:20px;overflow:hidden;background:rgba(10,18,27,.72)}.hardware-card>img{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#fff}.hardware-info{padding:20px}.hardware-info h3{margin:8px 0}.hardware-info p{margin:0;color:var(--muted,#9ba8b6);line-height:1.65}.hardware-info code{font-size:.86em}.flasher-options-four{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(max-width:720px){.hardware-grid,.flasher-options-four{grid-template-columns:1fr}.hardware-card>img{aspect-ratio:4/3}}
+
+
+/* Simplified firmware controls: actions live directly under each board image. */
+.firmware-hardware-card { display:flex; flex-direction:column; }
+.firmware-hardware-card > img { background:#f4f6f8; object-fit:contain; }
+.firmware-actions { margin-top:18px; padding-top:16px; border-top:1px solid var(--line,rgba(255,255,255,.12)); }
+.action-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-bottom:10px; }
+.action-row esp-web-install-button { display:block; min-width:0; }
+.action-row esp-web-install-button button,
+.compact-action { width:100%; min-width:0; justify-content:center; font-size:13px; padding:12px 10px; }
+.button-ota { background:transparent; color:var(--cyan); border:1px solid rgba(0,217,245,.45); }
+.button-ota:hover { background:rgba(0,217,245,.12); }
+.ota-row { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.firmware-file-list { display:grid; gap:5px; margin:12px 0 4px; padding:10px 12px; border-radius:10px; background:rgba(255,255,255,.035); }
+.firmware-file-list small { color:var(--muted); font-size:11px; overflow-wrap:anywhere; }
+.firmware-note { display:block; color:var(--muted); font-size:10px; line-height:1.4; }
+.firmware-release-bar { display:flex; align-items:center; flex-wrap:wrap; gap:10px 16px; margin-top:18px; padding:14px 16px; border:1px solid var(--line,rgba(255,255,255,.1)); border-radius:14px; color:var(--muted); font-size:13px; }
+.firmware-release-bar .text-link { margin-left:auto; }
+.firmware-guide-section { padding-top:34px; }
+.firmware-guide-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-top:24px; }
+.firmware-guide-grid article { padding:20px; border:1px solid var(--line,rgba(255,255,255,.12)); border-radius:16px; background:rgba(10,18,27,.55); }
+.firmware-guide-grid span { display:block; font:700 12px var(--display); letter-spacing:1px; color:var(--cyan); margin-bottom:14px; }
+.firmware-guide-grid h3 { margin:0 0 8px; font-size:17px; }
+.firmware-guide-grid p { margin:0; color:var(--muted); line-height:1.6; font-size:13px; }
+.firmware-guide-section .flasher-warning { margin-top:18px; }
+@media(max-width:720px){
+  .action-row { gap:8px; }
+  .compact-action { font-size:12px; padding:11px 7px; }
+  .firmware-guide-grid { grid-template-columns:1fr 1fr; }
+  .firmware-release-bar { align-items:flex-start; }
+  .firmware-release-bar .text-link { margin-left:0; width:100%; }
+}
+@media(max-width:420px){
+  .firmware-guide-grid { grid-template-columns:1fr; }
+  .action-row { grid-template-columns:1fr; }
+  .ota-row { grid-template-columns:1fr 1fr; }
+}

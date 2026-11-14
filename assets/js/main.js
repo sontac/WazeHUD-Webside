@@ -15,12 +15,10 @@
 
   // type="flash" = firmware gộp để nạp USB tại 0x0; type="ota" = file cập nhật OTA.
   const variants = [
-    { id: "cyd-usb", board: "CYD", channel: "USB", chip: "ESP32", type: "flash" },
-    { id: "cyd-ble", board: "CYD", channel: "BLE", chip: "ESP32", type: "flash" },
-    { id: "s3-usb", board: "S3", channel: "USB", chip: "ESP32-S3", type: "flash" },
-    { id: "s3-ble", board: "S3", channel: "BLE", chip: "ESP32-S3", type: "flash" },
-    { id: "cyd-usb-ota", board: "CYD", channel: "USB", type: "ota" },
-    { id: "cyd-ble-ota", board: "CYD", channel: "BLE", type: "ota" },
+    { id: "cyd-usb", board: "CYD", channel: "USB", chip: "esp32", type: "flash" },
+    { id: "cyd-ble", board: "CYD", channel: "BLE", chip: "esp32", type: "flash" },
+    { id: "s3-usb", board: "S3", channel: "USB", chip: "esp32s3", type: "flash" },
+    { id: "s3-ble", board: "S3", channel: "BLE", chip: "esp32s3", type: "flash" },
     { id: "s3-usb-ota", board: "S3", channel: "USB", type: "ota" },
     { id: "s3-ble-ota", board: "S3", channel: "BLE", type: "ota" }
   ];
@@ -30,11 +28,28 @@
   function matches(asset, v) {
     const n = asset?.name || "";
     const prefix = v.board === "S3" ? "WazeHUD-S3" : "WazeHUD-CYD";
-    const base = new RegExp(`^${prefix}-${v.channel}-v\\d+(?:\\.\\d+){1,3}(?:[-+][A-Za-z0-9.-]+)?\\.bin$`, "i");
-    const hasBase = new RegExp(`^${prefix}-${v.channel}-`, "i").test(n) && /\\.bin$/i.test(n);
-    const isOta = /(^|[-_.])ota([-. _]|$)/i.test(n) || /-ota\.bin$/i.test(n);
-    // OTA files are deliberately excluded from web flashing.
-    return v.type === "ota" ? hasBase && isOta : base.test(n) && !isOta;
+
+    // File OTA có dạng:
+    // WazeHUD-S3-BLE-OTA-v1.x.x.bin
+    // WazeHUD-S3-USB-OTA-v1.x.x.bin
+    if (v.type === "ota") {
+      const otaPattern = new RegExp(
+        `^${prefix}-${v.channel}-OTA-v\\d+(?:\\.\\d+){1,3}(?:[-+][A-Za-z0-9.-]+)?\\.bin$`,
+        "i"
+      );
+      return otaPattern.test(n);
+    }
+
+    // File firmware gộp để nạp trực tiếp tại địa chỉ 0x0:
+    // WazeHUD-S3-BLE-v1.x.x.bin
+    // WazeHUD-S3-USB-v1.x.x.bin
+    // WazeHUD-CYD-BLE-v1.x.x.bin
+    // WazeHUD-CYD-USB-v1.x.x.bin
+    const flashPattern = new RegExp(
+      `^${prefix}-${v.channel}-v\\d+(?:\\.\\d+){1,3}(?:[-+][A-Za-z0-9.-]+)?\\.bin$`,
+      "i"
+    );
+    return flashPattern.test(n);
   }
   function findLatest(releases, v) {
     for (const release of releases) {
@@ -57,21 +72,21 @@
     name.textContent = match.asset.name;
     button.href = match.asset.browser_download_url;
     button.textContent = v.type === "ota"
-      ? `Tải OTA · ${match.release.tag_name || "Release"} ↓`
-      : `Tải nạp mới · ${match.release.tag_name || "Release"} ↓`;
+      ? `Tải OTA ${v.channel}`
+      : `Tải BIN ${v.channel}`;
     note.textContent = `Bản phát hành: ${match.release.name || match.release.tag_name}.`;
   }
 
   async function setFlasher(v, match) {
     const assetLabel = $(`${v.id}-flash-asset`), install = $(`${v.id}-flash-button`);
     const activate = install?.querySelector('[slot="activate"]');
-    if (!assetLabel || !install || !activate) return false;
+    if (!install || !activate) return false;
     if (!match) {
-      assetLabel.textContent = "Chưa tìm thấy file BIN gộp đúng tên (không dùng file OTA).";
+      if (assetLabel) assetLabel.textContent = "Chưa tìm thấy file BIN gộp đúng tên (không dùng file OTA).";
       activate.disabled = true;
       return false;
     }
-    assetLabel.textContent = match.asset.name;
+    if (assetLabel) assetLabel.textContent = match.asset.name;
     try {
       await import("https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module");
       await customElements.whenDefined("esp-web-install-button");
@@ -87,7 +102,7 @@
       activate.disabled = false;
       return true;
     } catch (err) {
-      assetLabel.textContent += " · Không tải được trình nạp.";
+      if (assetLabel) assetLabel.textContent += " · Không tải được trình nạp.";
       return false;
     }
   }
@@ -97,22 +112,19 @@
     .then(async releases => {
       const published = releases.filter(r => !r.draft && !r.prerelease);
       const latest = published[0];
-      if (latest) $("release-status-text").textContent = `Bản phát hành mới nhất: ${latest.name || latest.tag_name} · ${new Date(latest.published_at).toLocaleDateString("vi-VN")}`;
+      if (latest && $("release-status-text")) $("release-status-text").textContent = `Bản phát hành mới nhất: ${latest.name || latest.tag_name} · ${new Date(latest.published_at).toLocaleDateString("vi-VN")}`;
       variants.forEach(v => setDownload(v, findLatest(published, v)));
       const results = [];
       for (const v of flashVariants) results.push(await setFlasher(v, findLatest(published, v)));
-      const ready = results.filter(Boolean).length;
-      $("flasher-status").textContent = ready
-        ? `Đã chuẩn bị ${ready}/4 lựa chọn nạp trực tiếp. Chỉ sử dụng firmware gộp, không sử dụng file OTA.`
-        : "Chưa tìm thấy firmware gộp phù hợp để nạp trực tiếp. Bạn vẫn có thể tải firmware từ GitHub Releases.";
+
     })
     .catch(() => {
-      $("release-status-text").textContent = "Không thể kết nối GitHub API lúc này. Bạn vẫn có thể mở Releases để kiểm tra.";
+      if ($("release-status-text")) $("release-status-text").textContent = "Không thể kết nối GitHub API lúc này. Bạn vẫn có thể mở Releases để kiểm tra.";
       variants.forEach(v => {
         const b = $(`${v.id}-download`); if (b) { b.href = releasesUrl; b.textContent = "Mở GitHub Releases ↗"; }
         const a = $(`${v.id}-asset-name`); if (a) a.textContent = "Chưa tải được danh sách firmware.";
       });
       flashVariants.forEach(v => { const f = $(`${v.id}-flash-asset`); if (f) f.textContent = "Không đọc được GitHub Releases."; });
-      $("flasher-status").textContent = "Không thể kiểm tra firmware. Hãy tải lại trang hoặc mở GitHub Releases.";
+
     });
 })();
