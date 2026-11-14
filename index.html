@@ -39,7 +39,7 @@
           <a class="button button-primary" href="#web-flasher">Nạp firmware <span>⇧</span></a>
           <a class="button button-primary" href="https://github.com/sontac/WazeHUD-CYD-2.8" target="_blank" rel="noopener">Khám phá mã nguồn <span>↗</span></a>
         </div>
-        <div class="hero-meta"><span class="meta-chip">ESP32 CYD &amp; ESP32-S3</span><span class="meta-chip">USB &amp; BLE</span><span class="meta-chip">GitHub Releases</span></div>
+        
       </div>
 
       <div class="hud-stage" aria-label="Ảnh thực tế thiết bị WazeHUD-CYD 2.8">
@@ -47,16 +47,14 @@
         <figure class="real-device-photo">
           <img src="assets/images/ui-v2-bien-gioi-han.jpg" alt="Ảnh thực tế giao diện V2 nhấn mạnh biển giới hạn tốc độ trên WazeHUD-CYD 2.8" loading="eager">
           <figcaption>ẢNH THỰC TẾ · WAZEHUD-CYD 2.8</figcaption>
-        </figure>
-        <div class="stage-caption">THIẾT BỊ THỰC TẾ · WAZEHUD-CYD 2.8</div>
-      </div>
-      <div class="hero-bottom-line"><span>BUILT FOR THE ROAD</span><span>01 / PROJECT OVERVIEW</span></div>
+        </figure>   
+      </div>    
     </section>
 
     <section class="stats-strip section-wrap" aria-label="Thông tin dự án">
-      <div><strong>2.8″</strong><span>Màn hình CYD & S3</span></div>
-      <div><strong>ESP32 / S3</strong><span>Nền tảng phần cứng</span></div>
-      <div><strong>USB / BLE</strong><span>Các kênh firmware</span></div>
+      <div><strong>2.8″</strong><span>Màn hình 2.8 inch</span></div>
+      <div><strong>ESP32 CYD / S3</strong><span>Nền tảng phần cứng</span></div>
+      <div><strong>USB / BLE</strong><span>2 kiểu kết nối</span></div>
       <div><strong>Open project</strong><span>Mã nguồn trên GitHub</span></div>
       <div class="visitor-stat"><span class="visitor-label">THỐNG KÊ TRUY CẬP</span><strong><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fsontac.github.io%2FWazeHUD-Webside%2F&label=VISITS&labelColor=%230b1720&countColor=%2300d9f5&style=flat" alt="Bộ đếm lượt truy cập website" loading="eager" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><span class="visitor-fallback" hidden>Chưa tải được</span></strong><span>Lượt truy cập website</span><a class="visitor-help" href="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fsontac.github.io%2FWazeHUD-Webside%2F&label=VISITS&labelColor=%230b1720&countColor=%2300d9f5&style=flat" target="_blank" rel="noopener">Mở bộ đếm ↗</a></div>
     </section>
@@ -72,15 +70,15 @@
           <img src="assets/images/ESP32-CYD-main.jpg" alt="Main ESP32 CYD 2.8 inch" loading="lazy">
           <div class="hardware-info">
             <span class="interface-tag">ESP32 CYD</span><h3>ESP32 CYD 2.8</h3>
-            <p>Phiên bản ESP32 CYD truyền thống. Chọn đúng kênh USB hoặc BLE trước khi tải hoặc nạp.</p>
+            <p>Phiên bản ESP32 CYD mạch vàng. Chọn đúng kiểu kết nối USB hoặc BLE trước khi tải hoặc nạp.</p>
             <div class="firmware-actions" aria-label="Firmware ESP32 CYD">
               <div class="action-row">
                 <esp-web-install-button id="cyd-ble-flash-button"><button slot="activate" class="button button-primary compact-action" type="button" disabled>Nạp FW BLE</button></esp-web-install-button>
                 <esp-web-install-button id="cyd-usb-flash-button"><button slot="activate" class="button button-primary compact-action" type="button" disabled>Nạp FW USB</button></esp-web-install-button>
               </div>
               <div class="action-row">
-                <a id="cyd-ble-download" class="button button-secondary compact-action" href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">Tải BIN BLE</a>
-                <a id="cyd-usb-download" class="button button-secondary compact-action" href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">Tải BIN USB</a>
+                <a id="cyd-ble-download" class="button button-secondary compact-action" href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">Tải file BIN - BLE</a>
+                <a id="cyd-usb-download" class="button button-secondary compact-action" href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">Tải file BIN - USB</a>
               </div>
               <div class="firmware-file-list">
                 <small id="cyd-ble-asset-name">Đang tìm firmware BLE…</small>
@@ -101,8 +99,8 @@
                 <esp-web-install-button id="s3-usb-flash-button"><button slot="activate" class="button button-primary compact-action" type="button" disabled>Nạp FW USB</button></esp-web-install-button>
               </div>
               <div class="action-row">
-                <a id="s3-ble-download" class="button button-secondary compact-action" href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">Tải BIN BLE</a>
-                <a id="s3-usb-download" class="button button-secondary compact-action" href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">Tải BIN USB</a>
+                <a id="s3-ble-download" class="button button-secondary compact-action" href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">Tải file BIN BLE</a>
+                <a id="s3-usb-download" class="button button-secondary compact-action" href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">Tải file BIN USB</a>
               </div>
               <div class="action-row ota-row">
                 <a id="s3-ble-ota-download" class="button button-ota compact-action" href="https://github.com/sontac/WazeHUD-CYD-2.8/releases" target="_blank" rel="noopener">Tải OTA BLE</a>
@@ -140,7 +138,7 @@
       <div class="flasher-warning"><strong>Lưu ý:</strong> Nạp firmware sẽ ghi đè nội dung flash. Hãy sử dụng Chrome hoặc Microsoft Edge trên máy tính và chọn đúng loại main trước khi thực hiện.</div>
 
       <div class="section-heading ota-guide-heading">
-        <div><div class="eyebrow">CẬP NHẬT OTA — ESP32-S3</div><h2>Cập nhật không cần<br><span>nạp lại bằng USB.</span></h2></div>
+        <div><div class="eyebrow">CẬP NHẬT OTA — ESP32-S3</div><h2>Cập nhật OTA<br><span>không cần cắm cáp USB.</span></h2></div>
         <p>Chức năng OTA chỉ dành cho ESP32-S3 đã được nạp firmware đầy đủ từ trước.</p>
       </div>
       <div class="firmware-guide-grid ota-guide-grid">
