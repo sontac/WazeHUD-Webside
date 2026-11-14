@@ -206,3 +206,6 @@ img, video, iframe, canvas, svg { max-width: 100%; }
   .support-account { min-width: 0; overflow-wrap: anywhere; }
   .site-footer > * { min-width: 0; overflow-wrap: anywhere; }
 }
+/* ESP32-S3 hardware additions */
+.hardware-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:28px}.hardware-card{border:1px solid var(--line,rgba(255,255,255,.12));border-radius:20px;overflow:hidden;background:rgba(10,18,27,.72)}.hardware-card>img{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#fff}.hardware-info{padding:20px}.hardware-info h3{margin:8px 0}.hardware-info p{margin:0;color:var(--muted,#9ba8b6);line-height:1.65}.hardware-info code{font-size:.86em}.flasher-options-four{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:720px){.hardware-grid,.flasher-options-four{grid-template-columns:1fr}.hardware-card>img{aspect-ratio:4/3}}
